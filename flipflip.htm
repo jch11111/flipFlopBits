@@ -1,0 +1,29 @@
+<script type="text/javascript"">
+    //********************************************************************************
+    // flipflop - switches even and odd bits
+    // curt hill
+    // 3/7/15
+    // input is string of 0'& 1's <= 8 bits within quotes, e.g. "01100110"
+    //********************************************************************************
+
+    var flipflop = function (bitString) {
+        // 0101 becomes 1010
+        // 0110 becomes 1001
+        // 1100 remains 1100
+
+        var n = parseInt(bitString, 2);  //convert string of 0's & 1's to integer
+        if (n > 255) throw new Error("please enter string of no more than 8 zeros and ones");
+
+        var evenBitsShifted1Right = ((n & parseInt("10101010", 2)) >> 1);
+        var oddBitsShifted1Left = ((n & parseInt("01010101", 2)) << 1);
+
+        n = evenBitsShifted1Right | oddBitsShifted1Left;
+
+        return n.toString(2);  //return as string representation of 0's & 1's
+    }
+
+    var flipflopMin = function (bitString) {
+        return parseInt(bitString, 2) > 255 ? "please enter string of no more than 8 zeros and ones" :
+      (((parseInt(bitString, 2) & parseInt("10101010", 2)) >> 1) | ((parseInt(bitString, 2) & parseInt("01010101", 2)) << 1)).toString(2);
+    }
+</script>
