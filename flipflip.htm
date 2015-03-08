@@ -19,7 +19,9 @@
 
         n = evenBitsShifted1Right | oddBitsShifted1Left;
 
-        return n.toString(2);  //return as string representation of 0's & 1's
+        var output = "0000000" + n.toString(2);  //return as string representation of 0's & 1's
+        var outputLen = output.length;
+        return output.substring(outputLen - 8, outputLen);
     }
 
     var flipflopMin = function (bitString) {
